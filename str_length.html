@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <div id="arr" style="font-size: 30px"></div>
+    <div id="cont"></div>
+  </body>
+</html>
+<script>
+  var s = ["jjhg", "kjl", "fdhgf", "reytr", "hgjhgcjf"];
+  document.getElementById("arr").textContent = s;
+  s.map((x) => {
+    var a = document.createElement("div");
+    a.textContent = x.length;
+    document.getElementById("cont").append(a);
+  });
+</script>

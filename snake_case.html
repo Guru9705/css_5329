@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <div id="arr" style="font-size: 30px"></div>
+    <div id="arr1" style="font-size: 30px"></div>
+  </body>
+</html>
+<script>
+  var arr = ["Gh jk", "klm y", "av i", "hgj ", "Abv k"];
+  document.getElementById("arr").textContent = arr;
+  var arr1 = [];
+  var s1 = "";
+
+  for (var i = 0; i < arr.length; i++) {
+    var y = arr[i].split(" ");
+    var b = y.reduce((acc, val) => {
+      return acc.concat(val.toLowerCase());
+    }, []);
+    arr1.push(b.join("_"));
+  }
+  document.getElementById("arr1").textContent = arr1;
+  // console.log(arr1);
+</script>

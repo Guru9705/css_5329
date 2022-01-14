@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <style>
+    .stop {
+      width: 10%;
+      margin: auto;
+    }
+    #start {
+      height: 40px;
+      width: 10%;
+      margin: auto;
+      margin-left: 300px;
+      background-color: aquamarine;
+    }
+    #reset {
+      height: 40px;
+      width: 10%;
+      margin: auto;
+      margin-left: 300px;
+      background-color: blueviolet;
+    }
+    #pause {
+      height: 40px;
+      width: 10%;
+      margin: auto;
+      margin-left: 300px;
+      background-color: chocolate;
+    }
+  </style>
+  <body>
+    <div class="stop" style="display: flex">
+      <div id="hour" style="font-size: 30px; margin: 10px"></div>
+      <div id="min" style="font-size: 30px; margin: 10px"></div>
+      <div id="sec" style="font-size: 30px; margin: 10px">0</div>
+    </div>
+
+    <button id="start">Start</button>
+    <button id="reset">Reset</button>
+    <button id="pause">Pause</button>
+  </body>
+</html>
+<script>
+  document.getElementById("start").addEventListener("click", displayStart);
+  document.getElementById("reset").addEventListener("click", reset_func);
+  document.getElementById("pause").addEventListener("click", pause_func);
+  //setInterval(displayMin, 60000);
+  var min = 0;
+  var sec = 0;
+  var hour = 0;
+  var set = 0;
+
+  function displayStart() {
+    set = setInterval(function () {
+      if (sec < 60) {
+        document.getElementById("sec").textContent = sec;
+        sec++;
+      } else if (sec == 60) {
+        sec = 0;
+        document.getElementById("sec").textContent = sec;
+        if (min < 60) {
+          min++;
+          document.getElementById("min").textContent = min;
+        } else if (min == 60) {
+          min = 0;
+          document.getElementById("sec").textContent = min;
+          hour++;
+          document.getElementById("hour").textContent = hour;
+        }
+      }
+    }, 1000);
+  }
+
+  function reset_func() {
+    clearInterval(set);
+    sec = 0;
+    min = 0;
+    hour = 0;
+    document.getElementById("sec").textContent = 0;
+  }
+  function pause_func() {
+    clearInterval(set);
+  }
+</script>

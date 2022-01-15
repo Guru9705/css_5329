@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <input type="text" placeholder="hours" id="hour" />
+    <input type="text" placeholder="minutes" id="min" />
+    <input type="text" placeholder="seconds" id="sec" />
+    <br /><br />
+    <button id="start">Start</button>
+    <button id="reset">Reset</button>
+    <button id="pause">Pause</button>
+  </body>
+</html>
+<script>
+  document.getElementById("start").addEventListener("click", start_func);
+  document.getElementById("reset").addEventListener("click", reset_func);
+  document.getElementById("pause").addEventListener("click", pause_func);
+
+  function start_func() {
+    var h = document.getElementById("hour").value;
+    var m = document.getElementById("min").value;
+    var s = document.getElementById("sec").value;
+    console.log(s);
+    set = setInterval(function () {
+      if (s > 0) {
+        s--;
+        document.getElementById("sec").value = s;
+      } else if (s == 0) {
+        document.getElementById("sec").value = 0;
+        if (m > 0) {
+          m--;
+          document.getElementById("min").value = m;
+          s = 59;
+          document.getElementById("sec").value = s;
+        } else if (m == 0) {
+          document.getElementById("min").value = 0;
+          if (h > 0) {
+            h--;
+            document.getElementById("hour").value = h;
+            m = 60;
+          } else {
+            clearInterval(set);
+          }
+        }
+      }
+    }, 1000);
+  }
+
+  function reset_func() {
+    clearInterval(set);
+    sec = 0;
+    min = 0;
+    hour = 0;
+    document.getElementById("sec").value = 0;
+    document.getElementById("min").value = 0;
+    document.getElementById("hour").value = 0;
+  }
+  function pause_func() {
+    clearInterval(set);
+  }
+</script>
